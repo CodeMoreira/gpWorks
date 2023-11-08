@@ -14,6 +14,17 @@ const config: Config = {
   ],
   theme: {
     colors,
+    screens: {
+      desktop: {
+        max: "1480px",
+      },
+      desktop2: {
+        max: "1280px",
+      },
+      tablet: {
+        max: "980px",
+      },
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -26,19 +26,17 @@ export default function Home() {
             <h3 className="text-secoundary animate-pulse">Carregando...</h3>
         </div>}
       <Header />
-      <main className='w-[1440px] h-fit flex flex-col items-center gap-[56px]'>
-        <section id="inicio" className='w-full h-[662px] flex items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
-          <div className='w-[710px] h-full flex flex-col items-center justify-center gap-[20px]'>
+      <main className='w-[1440px] desktop:w-full desktop:px-[24px] h-fit flex flex-col items-center gap-[56px]'>
+        <section id="inicio" className='w-full h-[662px] flex tablet:flex-col-reverse items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
+          <div className='flex-[1] h-full flex flex-col items-center justify-center gap-[20px]'>
             <h1 className='text-secoundary'>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
             <p className='text-tertiary'>Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
             <div className='w-full flex gap-[16px] mt-[16px]'>
               <SecoundaryButton text='Saiba mais' goTo='#Serviços' icon={<AiOutlineArrowDown />} />
             </div>
           </div>
-          <div className='w-[670px] h-[600px] flex flex-col items-center z-10'>
+          <div className='flex-[1] h-[600px] flex flex-col items-center z-10 desktop2:w-[650px] desktop2:h-[420px] tablet:hidden'>
             <RenderSpline
-              width='670px'
-              height='600px'
               scene='https://prod.spline.design/jJ6Vzin4lKsBGE36/scene.splinecode'
               render={
                 <Image
@@ -54,12 +52,13 @@ export default function Home() {
         </section>
 
         {/* Criação */}
-        <section className='flex gap-[12px] justify-center'>
+        <section className='flex gap-[12px] items-center'>
           <Image
             width={430}
             height={331}
             src={require('@/assets/images/devices.png')}
             alt='dispositivos.'
+            className='w-[430px] h-auto desktop:h-[200px] tablet:hidden'
           />
           <div className='flex flex-col gap-[24px]'>
             <h2 className='text-secoundary'>Criação</h2>
@@ -76,13 +75,13 @@ export default function Home() {
         <Divder />
 
         {/* Nossos serviços */}
-        <section id='Serviços' className='flex gap-[12px] justify-center'>
-          <div className='flex flex-col gap-[24px]'>
+        <section id='Serviços' className='w-full flex gap-[12px] justify-center'>
+          <div className='w-full flex flex-col gap-[24px] desktop:items-center'>
             <h2 className='text-secoundary'>Nossos serviços</h2>
             <p className='text-tertiary'>
               Bem-vindo ao mundo da criação de websites personalizados! Apresentamos nossas opções de planos:
             </p>
-            <div className="flex gap-[16px] items-center">
+            <div className="flex desktop:flex-wrap desktop:justify-center gap-[16px] items-center">
               <Card
                 height='220px'
                 title='Básico'
@@ -117,6 +116,7 @@ export default function Home() {
             height={396}
             src={require('@/assets/images/celular 1.png')}
             alt='celular saindo bolinhas laranjas.'
+            className='desktop:hidden'
           />
         </section>
         {/* Nossos serviços */}
@@ -124,17 +124,16 @@ export default function Home() {
         <Divder />
 
         {/* Contato Enterprise */}
-        <section id='Serviços' className='w-full px-[40px] flex gap-[12px] justify-center items-end relative'>
+        <section id='Serviços' className='w-full px-[40px] flex gap-[12px] justify-center items-end relative tablet:px-[8px]'>
           <Image
             width={292}
             height={396}
             src={require('@/assets/images/celular 2.png')}
             alt='celular com image saindo bolinhas coloridas.'
-            className='z-[2]'
+            className='z-[2] tablet:hidden'
           />
           <Card
             width='100%'
-            height='220px'
             title='Contato Enterprise'
             description='Caso você tenha um projeto maior em mente entre em contato conosco e resolvemos isso para você! Aqui você terá os melhores profissionais organizando, projetando e desenvolvendo seu projeto da maneira mais moderna e otmizada possivel.'
             textColor='secoundary'
@@ -167,6 +166,7 @@ export default function Home() {
             height={331}
             src={require('@/assets/images/livro.png')}
             alt='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
+            className='desktop2:hidden'
           />
         </section>
         {/* Sobre */}
