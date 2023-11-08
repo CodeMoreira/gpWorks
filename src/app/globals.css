@@ -2,26 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #f1f3f2;
+}
+
+h1 {
+  font-size: 52px;
+  line-height: 60px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 44px;
+  line-height: 60px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 22px;
+  line-height: 25px;
+}
+
+span {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+section {
+  padding-top: 56px; /** This is the header height */
+  padding-bottom: 56px; /** This is the header height */
+}
+
+.fadeIn {
+  animation: FadeIn 2s ease-in-out;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loader {
+  border: 8px solid transparent;
+  border-top: 8px solid #1c1c1c;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

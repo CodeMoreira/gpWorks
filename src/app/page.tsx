@@ -1,113 +1,178 @@
+'use client'
+
+import Divder from '@/components/Divider'
+import SecoundaryButton from '@/components/SecoundaryButton'
+import Header from '@/components/Header'
+import RenderSpline from '@/components/RenderSpline'
 import Image from 'next/image'
+import { AiOutlineArrowDown } from 'react-icons/ai';
+import Card from '@/components/Card'
+import PrimaryButton from '@/components/PrimaryButton'
+import { useLoading } from '@/hookes/useLoading'
+import Logo from '@/assets/svgs/logo'
+import Footer from '@/components/Footer'
 
 export default function Home() {
+  const { isLoading } = useLoading()
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className='w-screen h-screen flex justify-center relative overflow-x-hidden'>
+      {isLoading &&
+        <div className='w-full h-full fixed flex flex-col items-center justify-center z-[999] bg-primary'>
+            <div className='w-[80px] h-[80px] relative flex items-center justify-center animate-pulse'>
+              <Logo />
+              <div className="loader absolute"/>
+            </div>
+            <h3 className="text-secoundary animate-pulse">Carregando...</h3>
+        </div>}
+      <Header />
+      <main className='w-[1440px] h-fit flex flex-col items-center gap-[56px]'>
+        <section id="inicio" className='w-full h-[662px] flex items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
+          <div className='w-[710px] h-full flex flex-col items-center justify-center gap-[20px]'>
+            <h1 className='text-secoundary'>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
+            <p className='text-tertiary'>Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
+            <div className='w-full flex gap-[16px] mt-[16px]'>
+              <SecoundaryButton text='Saiba mais' goTo='#Serviços' icon={<AiOutlineArrowDown />} />
+            </div>
+          </div>
+          <div className='w-[670px] h-[600px] flex flex-col items-center z-10'>
+            <RenderSpline
+              width='670px'
+              height='600px'
+              scene='https://prod.spline.design/jJ6Vzin4lKsBGE36/scene.splinecode'
+              render={
+                <Image
+                  width={400}
+                  height={10}
+                  src={require('@/assets/images/sombra.png')}
+                  alt='sombra do notebook.'
+                  className='mx-[auto]'
+                />
+              }
             />
-          </a>
-        </div>
-      </div>
+          </div>
+        </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        {/* Criação */}
+        <section className='flex gap-[12px] justify-center'>
+          <Image
+            width={430}
+            height={331}
+            src={require('@/assets/images/devices.png')}
+            alt='dispositivos.'
+          />
+          <div className='flex flex-col gap-[24px]'>
+            <h2 className='text-secoundary'>Criação</h2>
+            <p className='text-tertiary'>
+              Já imaginou sua aplicação sendo desenvolvida com as melhores técnologias do mercado e estando disponivel em todas as plataformas? Com a gente você pode realizar isso e finalmente laver seu negócio para outro nível.
+            </p>
+            <p className='text-tertiary'>
+              Aqui a satisfação e resultado do cliente é o nosso foco, por conta disso nós insistimos que nossos clientes estejam presentes em todas as fases do projeto para assim garantir a melhor qualidade.
+            </p>
+          </div>
+        </section>
+        {/* Criação */}
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <Divder />
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        {/* Nossos serviços */}
+        <section id='Serviços' className='flex gap-[12px] justify-center'>
+          <div className='flex flex-col gap-[24px]'>
+            <h2 className='text-secoundary'>Nossos serviços</h2>
+            <p className='text-tertiary'>
+              Bem-vindo ao mundo da criação de websites personalizados! Apresentamos nossas opções de planos:
+            </p>
+            <div className="flex gap-[16px] items-center">
+              <Card
+                height='220px'
+                title='Básico'
+                description='Para aqueles que buscam simplicidade.'
+                textColor='secoundary'
+              />
+              <Card
+                height='288px'
+                title='Pro'
+                description='Perfeito para você que quer começar seu negócio do jeito certo.'
+                textColor='primary'
+                bgColor='secoundary'
+                badge={{
+                  text: 'Mais Popular',
+                  textColor: 'secoundary',
+                  bgColor: 'primary'
+                }}
+              />
+              <Card
+                height='220px'
+                title='Premuium'
+                description='Leve sua empresa para o próximo nível.'
+                textColor='secoundary'
+              />
+            </div>
+            <p className='text-tertiary'>
+              Nossa equipe está pronta para transformar sua visão em realidade. Vamos construir algo incrível juntos!
+            </p>
+          </div>
+          <Image
+            width={292}
+            height={396}
+            src={require('@/assets/images/celular 1.png')}
+            alt='celular saindo bolinhas laranjas.'
+          />
+        </section>
+        {/* Nossos serviços */}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+        <Divder />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        {/* Contato Enterprise */}
+        <section id='Serviços' className='w-full px-[40px] flex gap-[12px] justify-center items-end relative'>
+          <Image
+            width={292}
+            height={396}
+            src={require('@/assets/images/celular 2.png')}
+            alt='celular com image saindo bolinhas coloridas.'
+            className='z-[2]'
+          />
+          <Card
+            width='100%'
+            height='220px'
+            title='Contato Enterprise'
+            description='Caso você tenha um projeto maior em mente entre em contato conosco e resolvemos isso para você! Aqui você terá os melhores profissionais organizando, projetando e desenvolvendo seu projeto da maneira mais moderna e otmizada possivel.'
+            textColor='secoundary'
+            bgColor='primary'
+            customButton={<PrimaryButton text='Entrar em contato' onClick={() => {}} />}
+            className='mb-[48px] z-[2]'
+          />
+          <div className='absolute w-full h-[170px] rounded-xl bg-secoundary left-0 z-[1] mb-[30px]'/>
+        </section>
+        {/* Contato Enterprise */}
+
+        <Divder />
+
+        {/* Sobre */}
+        <section className='flex gap-[12px] justify-center'>
+          <div className='flex flex-col gap-[24px]'>
+            <h2 className='text-secoundary'>Um pouco sobre nós</h2>
+            <p className='text-tertiary'>
+              Nós unimos design criativo e funcionalidade digital para criar soluções de webdesign únicas. Com nossa experiência, combinamos estética inovadora com usabilidade eficaz, sempre comprometidos com a excelência.
+            </p>
+            <p className='text-tertiary'>
+              Trabalhamos em colaboração com nossos clientes, transformando suas visões em experiências digitais envolventes que contam histórias e refletem identidades de marca. 
+            </p>
+            <p className='text-tertiary'>
+              Seja uma startup, pequena empresa ou marca estabelecida, estamos aqui para superar expectativas e definir um novo padrão de presença online.
+            </p>
+          </div>
+          <Image
+            width={430}
+            height={331}
+            src={require('@/assets/images/livro.png')}
+            alt='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
+          />
+        </section>
+        {/* Sobre */}
+
+        <Footer />
+      </main>
+    </div>
   )
 }
