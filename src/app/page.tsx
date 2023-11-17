@@ -26,6 +26,7 @@ export default function Home() {
             <Image
               className='fadeInRight w-auto h-full'
               src={require('@/assets/images/notebook.png')}
+              title='notebook.'
               alt='notebook.'
             />
           </div>
@@ -38,6 +39,7 @@ export default function Home() {
             height={331}
             src={require('@/assets/images/devices.png')}
             alt='dispositivos.'
+            title='dispositivos.'
             className='w-[430px] h-auto desktop:h-[200px] tablet:hidden'
           />
           <div className='flex flex-col gap-[24px]'>
@@ -96,6 +98,7 @@ export default function Home() {
             height={396}
             src={require('@/assets/images/celular 1.png')}
             alt='celular saindo bolinhas laranjas.'
+            title='celular saindo bolinhas laranjas.'
             className='desktop:hidden'
           />
         </section>
@@ -110,6 +113,7 @@ export default function Home() {
             height={396}
             src={require('@/assets/images/celular 2.png')}
             alt='celular com image saindo bolinhas coloridas.'
+            title='celular com image saindo bolinhas coloridas.'
             className='z-[2] tablet:hidden'
           />
           <Card
@@ -146,6 +150,7 @@ export default function Home() {
             height={331}
             src={require('@/assets/images/livro.png')}
             alt='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
+            title='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
             className='desktop2:hidden'
           />
         </section>
