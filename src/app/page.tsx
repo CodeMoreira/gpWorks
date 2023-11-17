@@ -3,56 +3,36 @@
 import Divder from '@/components/Divider'
 import SecoundaryButton from '@/components/SecoundaryButton'
 import Header from '@/components/Header'
-import RenderSpline from '@/components/RenderSpline'
 import Image from 'next/image'
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import Card from '@/components/Card'
 import PrimaryButton from '@/components/PrimaryButton'
-import { useLoading } from '@/hookes/useLoading'
-import Logo from '@/assets/svgs/logo'
 import Footer from '@/components/Footer'
 
 export default function Home() {
-  const { isLoading } = useLoading()
-
   return (
-    <div className='w-screen h-screen flex justify-center relative overflow-x-hidden'>
-      {isLoading &&
-        <div className='w-full h-full fixed flex flex-col items-center justify-center z-[999] bg-primary'>
-            <div className='w-[80px] h-[80px] relative flex items-center justify-center animate-pulse'>
-              <Logo />
-              <div className="loader absolute"/>
-            </div>
-            <h3 className="text-secoundary animate-pulse">Carregando...</h3>
-        </div>}
+    <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
       <Header />
       <main className='w-[1440px] desktop:w-full desktop:px-[24px] h-fit flex flex-col items-center gap-[56px]'>
         <section id="inicio" className='w-full h-[662px] flex tablet:flex-col-reverse items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
           <div className='flex-[1] h-full flex flex-col items-center justify-center gap-[20px]'>
-            <h1 className='text-secoundary'>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
-            <p className='text-tertiary'>Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
-            <div className='w-full flex gap-[16px] mt-[16px]'>
+            <h1 className='fadeInLeft text-secoundary'>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
+            <p className='fadeInLeft text-tertiary'>Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
+            <div className='fadeInMainButton w-full flex gap-[16px] mt-[16px]'>
               <SecoundaryButton text='Saiba mais' goTo='#Serviços' icon={<AiOutlineArrowDown />} />
             </div>
           </div>
-          <div className='flex-[1] h-[600px] flex flex-col items-center z-10 desktop2:w-[650px] desktop2:h-[420px] tablet:hidden'>
-            <RenderSpline
-              scene='https://prod.spline.design/jJ6Vzin4lKsBGE36/scene.splinecode'
-              render={
-                <Image
-                  width={400}
-                  height={10}
-                  src={require('@/assets/images/sombra.png')}
-                  alt='sombra do notebook.'
-                  className='mx-[auto]'
-                />
-              }
+          <div className='flex-[1] h-[500px] flex flex-col items-center z-10 desktop2:w-[650px] desktop2:h-[420px] tablet:hidden'>
+            <Image
+              className='fadeInRight w-auto h-full'
+              src={require('@/assets/images/notebook.png')}
+              alt='notebook.'
             />
           </div>
         </section>
 
         {/* Criação */}
-        <section className='flex gap-[12px] items-center'>
+        <section className='fadeInLeft flex gap-[12px] items-center'>
           <Image
             width={430}
             height={331}
