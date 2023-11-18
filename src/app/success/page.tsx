@@ -4,7 +4,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { useEffect } from 'react'
 import PrimaryButton from '@/components/PrimaryButton'
-import { AiOutlineArrowRight } from 'react-icons/ai'
 
 export default function Success() {
     useEffect(() => {
