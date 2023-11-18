@@ -20,6 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="scroll-smooth" lang="pt-BR">
+      <meta name="facebook-domain-verification" content="7ilaovcelrsjufi2dt3pkie9rlm3zx" />
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
