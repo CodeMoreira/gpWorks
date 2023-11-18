@@ -13,14 +13,14 @@ export default function Success() {
 
     return (
         <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
-            <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
+            <Script src="https://www.googletagmanager.com/gtag/js?id=G-M4M9GQN86D" />
             <Script id="google-analytics">
                 {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
         
-                gtag('config', 'GA_MEASUREMENT_ID');
+                gtag('config', 'G-M4M9GQN86D');
                 `}
             </Script>
             <Header />
