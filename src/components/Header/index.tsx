@@ -12,10 +12,10 @@ export default function Header() {
                 </div>
                 <nav className="tablet:hidden">
                     <ul className="flex gap-[16px]">
-                        <li><Link href="#inicio">Inicio</Link></li>
-                        <li><Link href="#Serviços">Serviços</Link></li>
-                        <li><Link href="#Sobre">Sobre</Link></li>
-                        <li><Link target="_blank" href={process.env.NEXT_PUBLIC_WHATSAPP_LINK as string}>Contato</Link></li>
+                        <li><Link href="/#inicio">Inicio</Link></li>
+                        <li><Link href="/#Serviços">Serviços</Link></li>
+                        <li><Link href="/#Sobre">Sobre</Link></li>
+                        <li><Link href="/success">Contato</Link></li>
                     </ul>
                 </nav>
                 <div className="w-full flex justify-end tablet:w-fit">

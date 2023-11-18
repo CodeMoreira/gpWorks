@@ -27,7 +27,7 @@ export default function Card({ width = '310px', height, title, description, badg
                 <p>{description}</p>
             </div>
             {customButton ? customButton : (
-                <SecoundaryButton text='Entrar em contato' color={textColor} rounded="md" onClick={handleClick} newTab goTo={process.env.NEXT_PUBLIC_WHATSAPP_LINK as string} />
+                <SecoundaryButton text='Entrar em contato' color={textColor} rounded="md" onClick={handleClick} goTo="/success" />
             )}
         </div>
     )

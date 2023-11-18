@@ -18,7 +18,7 @@ export default function Footer() {
                                 <li><Link className="text-primary" href="#inicio">Inicio</Link></li>
                                 <li><Link className="text-primary" href="#Serviços">Serviços</Link></li>
                                 <li><Link className="text-primary" href="#Sobre">Sobre</Link></li>
-                                <li><Link className="text-primary" target="_blank" href={process.env.NEXT_PUBLIC_WHATSAPP_LINK as string}>Contato</Link></li>
+                                <li><Link className="text-primary" href="/success">Contato</Link></li>
                             </ul>
                         </nav>
                     </div>

@@ -122,7 +122,7 @@ export default function Home() {
             description='Caso você tenha um projeto maior em mente entre em contato conosco e resolvemos isso para você! Aqui você terá os melhores profissionais organizando, projetando e desenvolvendo seu projeto da maneira mais moderna e otmizada possivel.'
             textColor='secoundary'
             bgColor='primary'
-            customButton={<PrimaryButton text='Entrar em contato' onClick={() => {}} />}
+            customButton={<PrimaryButton text='Entrar em contato' />}
             className='mb-[48px] z-[2]'
           />
           <div className='absolute w-full h-[170px] rounded-xl bg-secoundary left-0 z-[1] mb-[30px]'/>
@@ -132,7 +132,7 @@ export default function Home() {
         <Divder />
 
         {/* Sobre */}
-        <section className='flex gap-[12px] justify-center'>
+        <section id="Sobre" className='flex gap-[12px] justify-center'>
           <div className='flex flex-col gap-[24px]'>
             <h2 className='text-secoundary'>Um pouco sobre nós</h2>
             <p className='text-tertiary'>
