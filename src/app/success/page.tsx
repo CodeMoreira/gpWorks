@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { useEffect } from 'react'
 import PrimaryButton from '@/components/PrimaryButton'
+import Script from 'next/script'
 
 export default function Success() {
     useEffect(() => {
@@ -12,6 +13,16 @@ export default function Success() {
 
     return (
         <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
+            <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
+            <Script id="google-analytics">
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+        
+                gtag('config', 'GA_MEASUREMENT_ID');
+                `}
+            </Script>
             <Header />
             <main className='w-[1440px] desktop:w-full desktop:px-[24px] h-fit flex flex-col items-center'>
                 <section className='w-full h-[700px] flex flex-col items-center justify-center'>

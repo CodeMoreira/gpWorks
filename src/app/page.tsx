@@ -8,10 +8,21 @@ import { AiOutlineArrowDown } from 'react-icons/ai';
 import Card from '@/components/Card'
 import PrimaryButton from '@/components/PrimaryButton'
 import Footer from '@/components/Footer'
+import Script from 'next/script'
 
 export default function Home() {
   return (
     <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'GA_MEASUREMENT_ID');
+        `}
+      </Script>
       <Header />
       <main className='w-[1440px] desktop:w-full desktop:px-[24px] h-fit flex flex-col items-center gap-[56px]'>
         <section id="inicio" className='w-full h-[662px] flex tablet:flex-col-reverse items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
