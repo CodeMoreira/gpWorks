@@ -1,34 +1,23 @@
-import { HTMLAttributes } from "react"
+import { ComponentProps, HTMLAttributes } from "react"
 import Badge, { IBadgeProps } from "../Badge"
 import SecoundaryButton from "../SecoundaryButton"
 
 interface ICardProps {
-    width?: `${number}px` | `${number}%`
-    height?: `${number}px`
     title: string
-    description: string
-    badge?: IBadgeProps
-    bgColor?: MyCustomColors
-    textColor: MyCustomColors
-    customButton?: React.JSX.Element
-    className?: HTMLAttributes<HTMLDivElement>['className']
+    icon: React.JSX.Element
+    description: string[]
+    className?: ComponentProps<'div'>['className']
 }
 
-export default function Card({ width = '310px', height, title, description, badge, bgColor, textColor, customButton, className }: ICardProps) {
-    const handleClick = () => {}
+export default function Card({ title, icon, description, className }: ICardProps) {
 
     return (
-        <div style={{ width, height: height ?? 'fit-content' }} className={`${className} flex flex-col justify-between gap-[12px] border-2 text-${textColor} p-[24px] rounded-lg ${bgColor && `bg-${bgColor}`} p-[16px]`}>
-            <div className="flex flex-col gap-[12px]">
-                <div className="flex items-center gap-[12px]">
-                    <h3>{title}</h3>
-                    {badge && <Badge {...badge}/>}
-                </div>
-                <p>{description}</p>
-            </div>
-            {customButton ? customButton : (
-                <SecoundaryButton text='Entrar em contato' color={textColor} rounded="md" onClick={handleClick} goTo="/success" />
-            )}
+        <div className={`flex flex-col items-center w-full h-full border-details border-[2px] rounded-xl p-[32px] gap-4 justify-between ${className}`}>
+            <h3 className="text-center">{title}</h3>
+            {icon}
+            {description.map(desc => (
+                <p key={desc} className="text-center text-text">{desc}</p>
+            ))}
         </div>
     )
 }

@@ -3,7 +3,9 @@ import type { Config } from "tailwindcss";
 export const colors = {
   primary: "#F1F3F2",
   secoundary: "#1C1C1C",
-  tertiary: "#4E4E4E",
+  tertiary: "#FF5C00",
+  text: "#4E4E4E",
+  details: "#D3D3D3",
 };
 
 const config: Config = {

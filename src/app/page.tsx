@@ -1,16 +1,70 @@
 'use client'
 
-import Divder from '@/components/Divider'
-import SecoundaryButton from '@/components/SecoundaryButton'
 import Header from '@/components/Header'
 import Image from 'next/image'
-import { AiOutlineArrowDown } from 'react-icons/ai';
-import Card from '@/components/Card'
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import PrimaryButton from '@/components/PrimaryButton'
 import Footer from '@/components/Footer'
 import Script from 'next/script'
+import { useEffect, useRef, useState } from 'react'
+import Paralax from '@/components/Paralax'
+import Card from '@/components/Card';
+import Layout from '@/assets/svgs/layput';
+import Gear from '@/assets/svgs/gear';
+import Graph from '@/assets/svgs/graph';
+import ScrollTrigger from '@/components/ScrollTrigger';
+
+const partners = [
+  {
+    name: 'Stark',
+    src: require('@/assets/images/stark.png'),
+    height: '32px'
+  },
+  {
+    name: 'FTD',
+    src: require('@/assets/images/ftd.png')
+  },
+  {
+    name: 'Petrobras',
+    src: require('@/assets/images/petrobras.png')
+  },
+  {
+    name: 'Selique Tech',
+    src: require('@/assets/images/selique-tech.png')
+  },
+  {
+    name: 'Forja dev',
+    src: require('@/assets/images/forja-dev.png')
+  },
+  {
+    name: 'JLX',
+    src: require('@/assets/images/jlx.png')
+  },
+]
 
 export default function Home() {
+  const partnersContainer = useRef<HTMLDivElement>(null)
+  const [pageCordinates, setPageCordinates] = useState<{x: number, y: number} | null>(null)
+
+  useEffect(() => {
+    if (partnersContainer.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const scrollContent = Array.from(partnersContainer.current.children)
+      scrollContent.forEach(item => {
+        const duplicatedItem = item.cloneNode(true)
+        partnersContainer.current?.appendChild(duplicatedItem)
+      })
+    }
+  }, [partnersContainer])
+
+  useEffect(() => {
+      document.addEventListener('mousemove', e => {
+        setPageCordinates({
+          x: e.pageX,
+          y: e.pageY
+        })
+      })
+  }, [])
+  
   return (
     <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-M4M9GQN86D" />
@@ -19,153 +73,220 @@ export default function Home() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
- 
           gtag('config', 'G-M4M9GQN86D');
         `}
       </Script>
       <Header />
-      <main className='w-[1440px] desktop:w-full desktop:px-[24px] h-fit flex flex-col items-center gap-[56px]'>
-        <section id="inicio" className='w-full h-[662px] flex tablet:flex-col-reverse items-center justify-between bg-[url("../assets/images/bolinhas.png")] bg-no-repeat bg-[length:1339px_519px] bg-center'>
-          <div className='flex-[1] h-full flex flex-col items-center justify-center gap-[20px]'>
-            <h1 className='fadeInLeft text-secoundary'>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
-            <p className='fadeInLeft text-tertiary'>Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
-            <div className='fadeInMainButton w-full flex gap-[16px] mt-[16px]'>
-              <SecoundaryButton text='Saiba mais' goTo='#Serviços' icon={<AiOutlineArrowDown />} />
+      <main className='h-fit flex flex-col w-[1440px] items-center pt-[calc(64px+24px)] desktop:w-full desktop:px-[24px]'>
+
+        {/* inicio */}
+        <section id='inicio' className='w-full flex items-center gap-[56px]'>
+          <div className='w-full fadeInLeft flex flex-col gap-[24px]'>
+            <div>
+              <span className='text-tertiary font-bold'>AGÊNCIA</span>
+              <h1>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
             </div>
+            <p className="text-text">Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
+            <PrimaryButton text='Faça um orçamento' icon={<AiOutlineArrowRight />} goTo="/success" />
           </div>
-          <div className='flex-[1] h-[500px] flex flex-col items-center z-10 desktop2:w-[650px] desktop2:h-[420px] tablet:hidden'>
-            <Image
-              className='fadeInRight w-auto h-full'
-              src={require('@/assets/images/notebook.png')}
-              title='notebook.'
-              alt='notebook.'
-            />
-          </div>
-        </section>
-
-        {/* Criação */}
-        <section className='fadeInLeft flex gap-[12px] items-center'>
-          <Image
-            width={430}
-            height={331}
-            src={require('@/assets/images/devices.png')}
-            alt='dispositivos.'
-            title='dispositivos.'
-            className='w-[430px] h-auto desktop:h-[200px] tablet:hidden'
-          />
-          <div className='flex flex-col gap-[24px]'>
-            <h2 className='text-secoundary'>Criação</h2>
-            <p className='text-tertiary'>
-              Já imaginou sua aplicação sendo desenvolvida com as melhores técnologias do mercado e estando disponivel em todas as plataformas? Com a gente você pode realizar isso e finalmente laver seu negócio para outro nível.
-            </p>
-            <p className='text-tertiary'>
-              Aqui a satisfação e resultado do cliente é o nosso foco, por conta disso nós insistimos que nossos clientes estejam presentes em todas as fases do projeto para assim garantir a melhor qualidade.
-            </p>
-          </div>
-        </section>
-        {/* Criação */}
-
-        <Divder />
-
-        {/* Nossos serviços */}
-        <section id='Serviços' className='w-full flex gap-[12px] justify-center'>
-          <div className='w-full flex flex-col gap-[24px] desktop:items-center'>
-            <h2 className='text-secoundary'>Nossos serviços</h2>
-            <p className='text-tertiary'>
-              Bem-vindo ao mundo da criação de websites personalizados! Apresentamos nossas opções de planos:
-            </p>
-            <div className="flex desktop:flex-wrap desktop:justify-center gap-[16px] items-center">
-              <Card
-                height='220px'
-                title='Básico'
-                description='Para aqueles que buscam simplicidade.'
-                textColor='secoundary'
+          <div className='w-[70%] flex items-center relative tablet:hidden'>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={2}
+              className='w-full'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/notebook.png')}
+                title='notebook'
+                alt='notebook'
+                className='fadeInRight w-full'
               />
-              <Card
-                height='288px'
-                title='Pro'
-                description='Perfeito para você que quer começar seu negócio do jeito certo.'
-                textColor='primary'
-                bgColor='secoundary'
-                badge={{
-                  text: 'Mais Popular',
-                  textColor: 'secoundary',
-                  bgColor: 'primary'
+            </Paralax>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={6}
+              className='w-[35%] absolute top-[-10%] left-0'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/Ellipse 1.png')}
+                title='bolinha'
+                alt='bolinha'
+                className='fadeInRight w-full'
+              />
+            </Paralax>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={3}
+              className='w-[20%] absolute top-[55%] right-[-2%]'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/Ellipse 2.png')}
+                title='bolinha'
+                alt='bolinha'
+                className='fadeInRight w-full'
+              />
+            </Paralax>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={1}
+              className='w-[7%] absolute top-[40%] left-0'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/Ellipse 3.png')}
+                title='bolinha'
+                alt='bolinha'
+                className='fadeInRight w-full'
+              />
+            </Paralax>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={1}
+              className='w-[10%] absolute top-[5%] right-0'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/Ellipse 4.png')}
+                title='bolinha'
+                alt='bolinha'
+                className='fadeInRight w-full'
+              />
+            </Paralax>
+            <Paralax
+              pageCordinates={pageCordinates}
+              speed={1}
+              className='w-[12%] absolute top-[80%] left-[12%]'
+            >
+              <Image
+                loading="lazy"
+                src={require('@/assets/images/Ellipse 4.png')}
+                title='bolinha'
+                alt='bolinha'
+                className='fadeInRight w-full'
+              />
+            </Paralax>
+          </div>
+        </section>
+
+        {/* Parceiros */}
+        <section id='servicos' className='partners_wrapper'>
+          <div ref={partnersContainer} className="partners_container">
+            {partners.map(({ src, name, height = '64px' }) => (
+              <Image
+                key={name}
+                loading="lazy"
+                src={src}
+                title={name}
+                alt={name}
+                style={{
+                  width: 'auto',
+                  height
                 }}
               />
-              <Card
-                height='220px'
-                title='Premuium'
-                description='Leve sua empresa para o próximo nível.'
-                textColor='secoundary'
-              />
-            </div>
-            <p className='text-tertiary'>
-              Nossa equipe está pronta para transformar sua visão em realidade. Vamos construir algo incrível juntos!
-            </p>
+            ))}
           </div>
-          <Image
-            width={292}
-            height={396}
-            src={require('@/assets/images/celular 1.png')}
-            alt='celular saindo bolinhas laranjas.'
-            title='celular saindo bolinhas laranjas.'
-            className='desktop:hidden'
-          />
         </section>
+
         {/* Nossos serviços */}
-
-        <Divder />
-
-        {/* Contato Enterprise */}
-        <section id='Serviços' className='w-full px-[40px] flex gap-[12px] justify-center items-end relative tablet:px-[8px]'>
-          <Image
-            width={292}
-            height={396}
-            src={require('@/assets/images/celular 2.png')}
-            alt='celular com image saindo bolinhas coloridas.'
-            title='celular com image saindo bolinhas coloridas.'
-            className='z-[2] tablet:hidden'
-          />
-          <Card
-            width='100%'
-            title='Contato Enterprise'
-            description='Caso você tenha um projeto maior em mente entre em contato conosco e resolvemos isso para você! Aqui você terá os melhores profissionais organizando, projetando e desenvolvendo seu projeto da maneira mais moderna e otmizada possivel.'
-            textColor='secoundary'
-            bgColor='primary'
-            customButton={<PrimaryButton text='Entrar em contato' />}
-            className='mb-[48px] z-[2]'
-          />
-          <div className='absolute w-full h-[170px] rounded-xl bg-secoundary left-0 z-[1] mb-[30px]'/>
-        </section>
-        {/* Contato Enterprise */}
-
-        <Divder />
-
-        {/* Sobre */}
-        <section id="Sobre" className='flex gap-[12px] justify-center'>
-          <div className='flex flex-col gap-[24px]'>
-            <h2 className='text-secoundary'>Um pouco sobre nós</h2>
-            <p className='text-tertiary'>
-              Nós unimos design criativo e funcionalidade digital para criar soluções de webdesign únicas. Com nossa experiência, combinamos estética inovadora com usabilidade eficaz, sempre comprometidos com a excelência.
-            </p>
-            <p className='text-tertiary'>
-              Trabalhamos em colaboração com nossos clientes, transformando suas visões em experiências digitais envolventes que contam histórias e refletem identidades de marca. 
-            </p>
-            <p className='text-tertiary'>
-              Seja uma startup, pequena empresa ou marca estabelecida, estamos aqui para superar expectativas e definir um novo padrão de presença online.
-            </p>
+        <section className='w-full flex flex-col items-center gap-6'>
+          <div className="flex flex-col items-center">
+            <span className="text-text">GP Works</span>
+            <h2>Nossos Serviços</h2>
           </div>
-          <Image
-            width={430}
-            height={331}
-            src={require('@/assets/images/livro.png')}
-            alt='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
-            title='livro, lapis, xicará de café, fita, bloco de notas e alguns retalhos de papeis.'
-            className='desktop2:hidden'
-          />
+          <p className='text-center text-text'>Aprenda um pouco mais sobre os serviços que oferecemos para <strong>turbinar seu negocio</strong>!</p>
+          <div className='w-full flex flex-wrap gap-[40px] justify-center'>
+            <ScrollTrigger animations={['reveal', 'fromLeft']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+              <Card
+                title="Web Design"
+                icon={<Layout />}
+                description={[
+                  'Criamos os melhores designs para seu negócio visando sempre pela elegância e pela taxa de conversão.',
+                  'Além de bonito seu website também rende mais!'
+                ]}
+              />
+            </ScrollTrigger>
+            <ScrollTrigger animations={['reveal']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+              <Card
+                title="Desenvolvimento web"
+                icon={<Gear />}
+                description={[
+                  'Desenvolvemos seu website com as ferramentas mais modernas e com o melhores profissionais.',
+                  'O melhor produto para a melhor empresa!'
+                ]}
+              />
+            </ScrollTrigger>
+            <ScrollTrigger animations={['reveal', 'fromRight']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+              <Card
+                title="Negócios"
+                icon={<Graph />}
+                description={[
+                  'Consultoria de um profissional especializado em negócios e descubra como você pode melhorar ainda mais seu negócos.',
+                  'Melhore seu negócio com nossa ajuda!'
+                ]}
+              />
+            </ScrollTrigger>
+          </div>
+          <p className='text-center text-text'>Esses são alguns exemplos dos <strong>diversos serviços que oferecemos</strong>, clique no botão abaixo e <strong>descubra todos os serviços que oferecemos</strong>!</p>
+          <PrimaryButton text='Ver todos os serviços' goTo="/success" />
         </section>
-        {/* Sobre */}
+
+        {/* Metricas */}
+        <section className='flex w-full gap-[40px] items-center tablet:flex-col tablet:text-center tablet:gap-[8px]'>
+          <ScrollTrigger animations={['reveal', 'fromLeft']} className='w-[800px] tablet:hidden'>
+            <Image
+              loading="lazy"
+              src={require('@/assets/images/metricas.png')}
+              title='metricas'
+              alt='metricas'
+              className="w-full"
+            />
+          </ScrollTrigger>
+          <div className='w-full h-full flex flex-col gap-[24px]'>
+            <div className="w-full">
+              <span className="text-text">Melhor desempenho</span>
+              <h2>Seu Website bem avalidado pelo Google</h2>
+            </div>
+            <p className='text-text'>Quanto maior for a <strong>nota</strong> do seu site no Google ou em outros motores de busca, mais essas ferramentas vão <strong>recomendar o seu site</strong>, ou seja, você <strong>aumentará</strong> o fluxo de pessoas acessando seu website.</p>
+            <p className='text-text'>Utilizando <strong>estratégias e técnicas</strong> de otimização seu website pode <strong>aumentar</strong> o fluxo de pessoas em <strong>até 200%</strong>.</p>
+          </div>
+          <ScrollTrigger animations={['reveal']} className='hidden tablet:block tablet:w-full'>
+            <Image
+              loading="lazy"
+              src={require('@/assets/images/metricas2.png')}
+              title='metricas'
+              alt='metricas'
+              className="w-full"
+            />
+          </ScrollTrigger>
+        </section>
+
+        {/* Google */}
+        <section className='flex w-full gap-[40px] items-center tablet:flex-col tablet:text-center tablet:gap-[8px]'>
+          <div className='w-full h-full flex flex-col gap-[24px] tablet:items-center'>
+            <div className="w-full">
+              <span className="text-text">Google</span>
+              <h2>Subindo no raking</h2>
+            </div>
+            <p className='text-text'>Quer estar entre os primeiros resultados das pequisas do Google? A gente te ajuda!</p>
+            <p className='text-text'>Com o uso das ferramentas mais modernas nós ajudamos o seu website alcançar os melhores resultados e subir no ranking de pesquisa do Google!</p>
+            <p className='text-text'>Não perca tempo, fale conosco e venha aumentar seus ganhos também!</p>
+            <PrimaryButton text='Entrar em contato' goTo="/success" />
+          </div>
+          <ScrollTrigger animations={['reveal', 'fromRight']} className='w-[800px] tablet:hidden'>
+            <Image
+              loading="lazy"
+              src={require('@/assets/images/google.png')}
+              title='raking do Google'
+              alt='raking do Google'
+              className="w-full"
+            />
+          </ScrollTrigger>
+        </section>
+
+        {/* Portfólio */}
 
         <Footer />
       </main>

@@ -1,0 +1,35 @@
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fromTop {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: translateY(0);
+  }
+}
+
+@keyframes fromRight {
+  0% {
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: translateX(0);
+  }
+}
+
+@keyframes fromLeft {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: translateX(0);
+  }
+}
