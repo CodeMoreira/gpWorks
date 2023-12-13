@@ -26,7 +26,19 @@ const config: Config = {
       tablet: {
         max: "980px",
       },
-    },
+      m2xl: { max: "1536px" },
+			mxl: { max: "1280px" },
+			mlg: { max: "1023px" },
+			mmd: { max: "920px" },
+			msm: { max: "640px" },
+			mxs: { max: "480px" },
+			"2xl": "1536px",
+			xl: "1280px",
+			lg: "1023px",
+			md: "920px",
+			sm: "640px",
+			xs: "480px",
+		},
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

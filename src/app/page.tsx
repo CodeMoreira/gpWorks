@@ -13,6 +13,7 @@ import Layout from '@/assets/svgs/layput';
 import Gear from '@/assets/svgs/gear';
 import Graph from '@/assets/svgs/graph';
 import ScrollTrigger from '@/components/ScrollTrigger';
+import Balancer from 'react-wrap-balancer'
 
 const partners = [
   {
@@ -42,6 +43,48 @@ const partners = [
   },
 ]
 
+
+const portifolio = [
+  {
+    name: 'Stark',
+    src: require('@/assets/portifolio/starkbanking-site.png'),
+    srcLogo: require('@/assets/images/stark.png'),
+  },
+  {
+    name: 'Petrobrás',
+    src: require('@/assets/portifolio/petrobras-site.png'),
+    srcLogo: require('@/assets/images/petrobras.png')
+  },
+  {
+    name: 'DuCrédito',
+    src: require('@/assets/portifolio/ducredito-app.png')
+  },
+  {
+    name: 'FTD Site',
+    src: require('@/assets/portifolio/ftd-site.png'),
+    srcLogo: require('@/assets/images/ftd.png')
+
+  },
+  {
+    name: 'JLX',
+    src: require('@/assets/portifolio/jlx-site.png'),
+    srcLogo: require('@/assets/images/jlx.png')
+  },
+  {
+    name: 'Pesquisa Italiana',
+    src: require('@/assets/portifolio/pesquisaitaliana-seo.png')
+  },
+  {
+    name: 'RGB',
+    src: require('@/assets/portifolio/rgb-seo.png')
+  },
+  {
+    name: 'FTD 360',
+    src: require('@/assets/portifolio/ftd-360.png'),
+    srcLogo: require('@/assets/images/ftd.png')
+
+  },
+]
 export default function Home() {
   const partnersContainer = useRef<HTMLDivElement>(null)
   const [pageCordinates, setPageCordinates] = useState<{x: number, y: number} | null>(null)
@@ -82,11 +125,11 @@ export default function Home() {
         {/* inicio */}
         <section id='inicio' className='w-full flex items-center gap-[56px]'>
           <div className='w-full fadeInLeft flex flex-col gap-[24px]'>
-            <div>
+            <Balancer>
               <span className='text-tertiary font-bold'>AGÊNCIA</span>
               <h1>CRIE, INOVE, IMPACTE COM NOSSO DESIGN DIGITAL.</h1>
-            </div>
-            <p className="text-text">Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
+              <p className="text-text">Da concepção à realidade digital: construímos sites que refletem sua visão única.</p>
+            </Balancer>
             <PrimaryButton text='Faça um orçamento' icon={<AiOutlineArrowRight />} goTo="/success" />
           </div>
           <div className='w-[70%] flex items-center relative tablet:hidden'>
@@ -210,7 +253,7 @@ export default function Home() {
             </ScrollTrigger>
             <ScrollTrigger animations={['reveal']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
               <Card
-                title="Desenvolvimento web"
+                title="Desenvolvimento Web"
                 icon={<Gear />}
                 description={[
                   'Desenvolvemos seu website com as ferramentas mais modernas e com o melhores profissionais.',
@@ -285,9 +328,36 @@ export default function Home() {
             />
           </ScrollTrigger>
         </section>
-
         {/* Portfólio */}
-
+        <section className='w-full flex flex-col items-center gap-6'>
+          <div className="flex flex-col items-center">
+            <h2>Portfólio</h2>
+            <p className='text-center text-text'>Veja um pouco do nosso trabalho, visite alguns dos nossos clientes e veja por si mesmo a qualidade dos nossos serviços!</p>
+          </div>
+          <div className="grid grid-cols-4 mmd:grid-cols-2 msm:grid-cols-1 gap-4">
+          {portifolio.reduce((acc: { src: string; name: string }[][], { src, name }, index) => {
+              if (index % 2 === 0) {
+                acc.push([]);
+              }
+              acc[acc.length - 1].push({ src, name });
+              return acc;
+            }, []).map((group, groupIndex) => (
+              <div key={groupIndex} className="grid gap-4 grid-cols-1 justify-items-center">
+                {group.map(({ src, name }, itemIndex: number) => (
+                  <div key={itemIndex}>
+                    <Image
+                      loading="lazy"
+                      className="h-auto max-w-full rounded-lg"
+                      src={src}
+                      title={name}
+                      alt={name}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
         <Footer />
       </main>
     </div>
