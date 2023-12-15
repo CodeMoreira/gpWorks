@@ -9,7 +9,7 @@
 
 @keyframes fromTop {
   0% {
-    transform: translateY(-100px);
+    transform: translateY(-100%);
   }
   100% {
     opacity: translateY(0);
@@ -18,7 +18,7 @@
 
 @keyframes fromRight {
   0% {
-    transform: translateX(100px);
+    transform: translateX(100%);
   }
   100% {
     opacity: translateX(0);
@@ -27,7 +27,7 @@
 
 @keyframes fromLeft {
   0% {
-    transform: translateX(-100px);
+    transform: translateX(-100%);
   }
   100% {
     opacity: translateX(0);

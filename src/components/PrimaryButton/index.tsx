@@ -12,7 +12,7 @@ export default function PrimaryButton({ onClick, text, icon, goTo }: IPrimaryBut
         <Link 
             target={goTo ? '_blank' : "_self"}
             href={goTo ?? "/success"}
-            className="w-fit flex items-center gap-[12px] bg-gradient-to-r from-[#FF6900] to-[#FF8B00] text-primary font-semibold px-[24px] py-[8px] rounded-full"
+            className="w-fit flex items-center gap-[12px] bg-gradient-to-r from-[#FF6900] to-[#FF8B00] text-primary font-semibold px-[24px] py-[8px] rounded-full shadow-lg"
             onClick={onClick}
         >
             {text}

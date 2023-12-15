@@ -26,6 +26,9 @@ const config: Config = {
       tablet: {
         max: "980px",
       },
+      phone: {
+        max: "480px",
+      },
       m2xl: { max: "1536px" },
 			mxl: { max: "1280px" },
 			mlg: { max: "1023px" },

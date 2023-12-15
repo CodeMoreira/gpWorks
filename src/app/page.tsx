@@ -14,6 +14,7 @@ import Gear from '@/assets/svgs/gear';
 import Graph from '@/assets/svgs/graph';
 import ScrollTrigger from '@/components/ScrollTrigger';
 import Balancer from 'react-wrap-balancer'
+import Link from 'next/link';
 
 const partners = [
   {
@@ -43,48 +44,61 @@ const partners = [
   },
 ]
 
-
 const portifolio = [
   {
     name: 'Stark',
+    link: 'https://web.stark.money/en-US/',
     src: require('@/assets/portifolio/starkbanking-site.png'),
     srcLogo: require('@/assets/images/stark.png'),
+    height: '40px',
   },
   {
     name: 'Petrobrás',
+    link: 'https://www.petrobraspremmia.com.br/',
     src: require('@/assets/portifolio/petrobras-site.png'),
     srcLogo: require('@/assets/images/petrobras.png')
   },
   {
     name: 'DuCrédito',
-    src: require('@/assets/portifolio/ducredito-app.png')
+    src: require('@/assets/portifolio/ducredito-app.png'),
+    srcLogo: require('@/assets/images/ducredito.png'),
+    height: 40,
   },
   {
     name: 'FTD Site',
+    link: 'https://pnld.ftd.com.br/',
     src: require('@/assets/portifolio/ftd-site.png'),
     srcLogo: require('@/assets/images/ftd.png')
-
   },
   {
     name: 'JLX',
+    link: 'https://jlx.com.br/home',
     src: require('@/assets/portifolio/jlx-site.png'),
     srcLogo: require('@/assets/images/jlx.png')
   },
   {
     name: 'Pesquisa Italiana',
-    src: require('@/assets/portifolio/pesquisaitaliana-seo.png')
+    link: 'https://pesquisaitaliana.com.br/',
+    src: require('@/assets/portifolio/pesquisaitaliana-seo.png'),
+    srcLogo: require('@/assets/images/Pesquisa italiana.png'),
   },
   {
     name: 'RGB',
-    src: require('@/assets/portifolio/rgb-seo.png')
+    link: 'https://rgb.com.br/',
+    src: require('@/assets/portifolio/rgb-seo.png'),
+    srcLogo: require('@/assets/images/rgb.png'),
+    height: '40px',
+    bg: '#000'
   },
   {
     name: 'FTD 360',
+    link: 'https://360.ftd.com.br/#/main',
     src: require('@/assets/portifolio/ftd-360.png'),
-    srcLogo: require('@/assets/images/ftd.png')
-
+    srcLogo: require('@/assets/images/ftd.png'),
+    columns: '2',
   },
 ]
+
 export default function Home() {
   const partnersContainer = useRef<HTMLDivElement>(null)
   const [pageCordinates, setPageCordinates] = useState<{x: number, y: number} | null>(null)
@@ -94,6 +108,7 @@ export default function Home() {
       const scrollContent = Array.from(partnersContainer.current.children)
       scrollContent.forEach(item => {
         const duplicatedItem = item.cloneNode(true)
+        partnersContainer.current?.appendChild(duplicatedItem)
         partnersContainer.current?.appendChild(duplicatedItem)
       })
     }
@@ -107,7 +122,7 @@ export default function Home() {
         })
       })
   }, [])
-  
+
   return (
     <div className='w-screen h-screen flex justify-center overflow-x-hidden'>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-M4M9GQN86D" />
@@ -121,7 +136,6 @@ export default function Home() {
       </Script>
       <Header />
       <main className='h-fit flex flex-col w-[1440px] items-center pt-[calc(64px+24px)] desktop:w-full desktop:px-[24px]'>
-
         {/* inicio */}
         <section id='inicio' className='w-full flex items-center gap-[56px]'>
           <div className='w-full fadeInLeft flex flex-col gap-[24px]'>
@@ -135,7 +149,7 @@ export default function Home() {
           <div className='w-[70%] flex items-center relative tablet:hidden'>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={2}
+              speed={4}
               className='w-full'
             >
               <Image
@@ -148,7 +162,7 @@ export default function Home() {
             </Paralax>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={6}
+              speed={12}
               className='w-[35%] absolute top-[-10%] left-0'
             >
               <Image
@@ -161,7 +175,7 @@ export default function Home() {
             </Paralax>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={3}
+              speed={6}
               className='w-[20%] absolute top-[55%] right-[-2%]'
             >
               <Image
@@ -174,7 +188,7 @@ export default function Home() {
             </Paralax>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={1}
+              speed={2}
               className='w-[7%] absolute top-[40%] left-0'
             >
               <Image
@@ -187,7 +201,7 @@ export default function Home() {
             </Paralax>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={1}
+              speed={2}
               className='w-[10%] absolute top-[5%] right-0'
             >
               <Image
@@ -200,7 +214,7 @@ export default function Home() {
             </Paralax>
             <Paralax
               pageCordinates={pageCordinates}
-              speed={1}
+              speed={2}
               className='w-[12%] absolute top-[80%] left-[12%]'
             >
               <Image
@@ -241,7 +255,7 @@ export default function Home() {
           </div>
           <p className='text-center text-text'>Aprenda um pouco mais sobre os serviços que oferecemos para <strong>turbinar seu negocio</strong>!</p>
           <div className='w-full flex flex-wrap gap-[40px] justify-center'>
-            <ScrollTrigger animations={['reveal', 'fromLeft']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+            <ScrollTrigger animations={['reveal', 'fromLeft']} className='min-w-[364px] max-w-[500px] flex-[1]'>
               <Card
                 title="Web Design"
                 icon={<Layout />}
@@ -251,7 +265,7 @@ export default function Home() {
                 ]}
               />
             </ScrollTrigger>
-            <ScrollTrigger animations={['reveal']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+            <ScrollTrigger animations={['reveal']} className='min-w-[364px] max-w-[500px] flex-[1]'>
               <Card
                 title="Desenvolvimento Web"
                 icon={<Gear />}
@@ -261,7 +275,7 @@ export default function Home() {
                 ]}
               />
             </ScrollTrigger>
-            <ScrollTrigger animations={['reveal', 'fromRight']} className='min-w-[312px] max-w-[500px] flex-1 h-[355px]'>
+            <ScrollTrigger animations={['reveal', 'fromRight']} className='min-w-[364px] max-w-[500px] flex-[1]'>
               <Card
                 title="Negócios"
                 icon={<Graph />}
@@ -328,36 +342,49 @@ export default function Home() {
             />
           </ScrollTrigger>
         </section>
+
         {/* Portfólio */}
-        <section className='w-full flex flex-col items-center gap-6'>
+        <section id="portfolio" className='w-full flex flex-col items-center gap-6'>
           <div className="flex flex-col items-center">
             <h2>Portfólio</h2>
             <p className='text-center text-text'>Veja um pouco do nosso trabalho, visite alguns dos nossos clientes e veja por si mesmo a qualidade dos nossos serviços!</p>
           </div>
-          <div className="grid grid-cols-4 mmd:grid-cols-2 msm:grid-cols-1 gap-4">
-          {portifolio.reduce((acc: { src: string; name: string }[][], { src, name }, index) => {
-              if (index % 2 === 0) {
-                acc.push([]);
-              }
-              acc[acc.length - 1].push({ src, name });
-              return acc;
-            }, []).map((group, groupIndex) => (
-              <div key={groupIndex} className="grid gap-4 grid-cols-1 justify-items-center">
-                {group.map(({ src, name }, itemIndex: number) => (
-                  <div key={itemIndex}>
-                    <Image
-                      loading="lazy"
-                      className="h-auto max-w-full rounded-lg"
-                      src={src}
-                      title={name}
-                      alt={name}
-                    />
-                  </div>
-                ))}
-              </div>
+          <div className="w-full grid grid-cols-4 tablet:grid-cols-2 phone:grid-cols-1 gap-[40px]">
+            {portifolio.map(({ name, link, src, srcLogo, height, bg }, index) => (
+              <ScrollTrigger
+                key={name}
+                animations={['reveal', 'fromTop']}
+                delay={{ time: 0.2 * index, styleBeforeAnimation: { width: '100%', height: '400px' }}}
+              >
+                <Link target='_blank' href={link ?? '#portfolio'} className='h-fit relative'>
+                  <Image
+                    loading="lazy"
+                    className="w-full rounded-lg"
+                    src={src}
+                    title={name}
+                    alt={name}
+                  />
+                  <Image
+                    loading="lazy"
+                    style={{ 
+                      height: height ?? '60px',
+                      width: 'auto',
+                      transform: 'translate(-50%, 25%)',
+                      backgroundColor: bg ?? '#fff',
+                      outline: `solid 8px ${bg ?? '#fff'}`,
+                      outlineOffset: '-1px',
+                    }}
+                    className="bottom-0 left-[50%] absolute rounded-lg shadow-lg"
+                    src={srcLogo}
+                    title={`logo - ${name}`}
+                    alt={`logo - ${name}`}
+                  />
+                </Link>
+              </ScrollTrigger>
             ))}
           </div>
         </section>
+
         <Footer />
       </main>
     </div>
