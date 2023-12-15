@@ -53,7 +53,7 @@ export default function Header() {
                                         className="hover:!text-tertiary transition-all"
                                         href={
                                             innerHash
-                                                ? `#${innerHash}`
+                                                ? `/#${innerHash}`
                                                 : page ?? ''
                                         }
                                     >
