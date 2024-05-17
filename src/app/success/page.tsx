@@ -8,7 +8,7 @@ import Script from 'next/script'
 
 export default function Success() {
     useEffect(() => {
-        window.open(process.env.NEXT_PUBLIC_WHATSAPP_LINK, "_blank");
+        window.open("https://api.whatsapp.com/send/?phone=5511953636909&text=Ol%C3%A1+eu+gostaria+de+saber+mais+sobre+o+que+a+GP+oferece.&type=phone_number&app_absent=0", "_blank");
     }, [])
 
     return (
@@ -30,7 +30,7 @@ export default function Success() {
                         <h3 className='text-secoundary text-center'>Envie uma mensagem!</h3>
                         <p className='text-tertiary text-center'>Fale conosco e tire suas dúvidas.</p>
                         <p className='text-tertiary text-center'>Que tal também agendar uma reunião e falar um pouco mais sobre você e seu projeto? Vamos juntos criar sua imagem digital!</p>
-                        <PrimaryButton text='Enviar mensagem' goTo={process.env.NEXT_PUBLIC_WHATSAPP_LINK} />
+                        <PrimaryButton text='Enviar mensagem' goTo={"https://api.whatsapp.com/send/?phone=5511953636909&text=Ol%C3%A1+eu+gostaria+de+saber+mais+sobre+o+que+a+GP+oferece.&type=phone_number&app_absent=0"} />
                     </div>
                 </section>
                 <Footer />
